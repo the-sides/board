@@ -1,0 +1,54 @@
+.cube {
+    height: 120px;
+    width: 120px;
+    border: 1px solid black;
+    background: white;
+    box-sizing: content-box;
+    color: black;
+    transform: rotateX(60deg) rotateY(0deg) rotateZ(-45deg);
+    position: relative;
+    overflow: visible;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    /* perspective: 120px; */
+    @apply transition-transform;
+    /* transition: ; */
+
+    &::after {
+        content: '';
+        position: absolute;
+        background: grey;
+        height: 120px;
+        width: 120px;
+        top: 0;
+        left: -100%;
+        @apply transition-transform;
+        transform: rotateY(-90deg);
+        transform-origin: center right;
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        background: darkgrey;
+        height: 120px;
+        width: 120px;
+        /* top: 0; */
+        left:0;
+        bottom: -100%;
+        @apply transition-transform;
+        transform: rotateX(-90deg);
+        transform-origin: top center;
+    }
+
+
+    &:hover {
+        transform: rotateX(60deg) rotateY(0deg) rotateZ(-45deg) translate(20px, -20px);
+
+        &::after{
+            transform: rotateY(-90deg) scaleX(1.131);
+        }
+        &::before{
+            transform: rotateX(-90deg) scaleY(1.131);
+        }
+    }
+}
