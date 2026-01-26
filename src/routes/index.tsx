@@ -15,10 +15,10 @@ function App() {
   const features = [
     {
       icon: <Box className="w-12 h-12 text-cyan-400" />,
-      title: 'Cubes',
+      title: 'Winter Steps',
       href: '/cubes',
       description:
-        'Winter-themed isometric cubes. Maybe one day I\'ll snow.',
+        'Winter-themed isometric cubes. Maybe one day it\'ll snow.',
     },
     
   ]

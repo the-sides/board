@@ -4,8 +4,10 @@ import { useState } from 'react'
 import {
   ChevronDown,
   ChevronRight,
+  CurlyBraces,
   Globe,
   Home,
+  Snowflake,
   Menu,
   Network,
   SquareFunction,
@@ -29,21 +31,21 @@ export default function Header() {
         >
           <Menu size={24} />
         </button>
-        <h1 className="ml-4 text-xl font-semibold">
-          <Link to="/">
+        <h1 className="ml-4 text-3xl font-extrabold uppercase">
+          <Link to="/" className='flex gap-x-2'>
             <img
               src="/tanstack-word-logo-white.svg"
               alt="TanStack Logo"
-              className="h-10"
+              className="w-10 h-10 object-cover object-left"
             />
+          SideStack
           </Link>
         </h1>
       </header>
 
       <aside
-        className={`fixed top-0 left-0 h-full w-80 bg-gray-900 text-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out flex flex-col ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
+        className={`fixed top-0 left-0 h-full w-80 bg-gray-900 text-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out flex flex-col ${isOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}
       >
         <div className="flex items-center justify-between p-4 border-b border-gray-700">
           <h2 className="text-xl font-bold">Navigation</h2>
@@ -69,9 +71,22 @@ export default function Header() {
             <Home size={20} />
             <span className="font-medium">Home</span>
           </Link>
-
+          <p className="mx-3 mb-2 pt-7 pb-1 border-b border-neutral-500 text-lg font-bold">My Work</p>
+          <Link
+            to="/demo/cubes"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
+            activeProps={{
+              className:
+                'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
+            }}
+          >
+            <Snowflake size={20} />
+            <span className="font-medium">Winter Steps</span>
+          </Link>
           {/* Demo Links Start */}
 
+          <p className="mx-3 mb-2 pt-7 pb-1 border-b border-neutral-500 text-lg font-bold">Default TanStack Pages</p>
           <Link
             to="/demo/start/server-funcs"
             onClick={() => setIsOpen(false)}
