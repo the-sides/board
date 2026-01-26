@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState, useCallback } from 'react'
-import { Shuffle, Copy, Check, RotateCcw, Plus, Minus } from 'lucide-react'
+import { Shuffle, Copy, Check, RotateCcw, Plus, Minus, CopyPlus } from 'lucide-react'
 
 export const Route = createFileRoute('/demo/gradient')({
   component: GradientGenerator,
@@ -105,6 +105,17 @@ function GradientGenerator() {
     if (colors.length <= 2) return
     // Remove color but preserve other positions
     setColors((prev) => prev.filter((_, i) => i !== index))
+  }
+
+  const duplicateColor = (index: number) => {
+    if (colors.length >= 5) return
+    const colorToDuplicate = colors[index]
+    // Place duplicate 10% further along, clamped to 0-100
+    const newPosition = Math.min(100, Math.max(0, colorToDuplicate.position + 10))
+    setColors((prev) => [
+      ...prev,
+      { color: colorToDuplicate.color, position: newPosition },
+    ])
   }
 
   return (
@@ -223,15 +234,25 @@ function GradientGenerator() {
                       className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                     />
                   </div>
-                  {colors.length > 2 && (
+                  <div className="flex items-center gap-1 shrink-0">
                     <button
-                      onClick={() => removeColor(index)}
-                      className="p-2 text-slate-500 hover:text-red-400 transition-colors shrink-0"
-                      title="Remove color"
+                      onClick={() => duplicateColor(index)}
+                      disabled={colors.length >= 5}
+                      className="p-2 text-slate-500 hover:text-cyan-400 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                      title="Duplicate color"
                     >
-                      <Minus className="w-4 h-4" />
+                      <CopyPlus className="w-4 h-4" />
                     </button>
-                  )}
+                    {colors.length > 2 && (
+                      <button
+                        onClick={() => removeColor(index)}
+                        className="p-2 text-slate-500 hover:text-red-400 transition-colors"
+                        title="Remove color"
+                      >
+                        <Minus className="w-4 h-4" />
+                      </button>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
