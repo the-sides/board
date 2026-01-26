@@ -12,24 +12,29 @@ export const Route = createFileRoute('/demo/cubes')({
 
 function Home() {
   const cubesX = 9
-  const cubesY = 5;
+  const cubesY = 12;
+  const a = 120;
+  const b = 120;
+  const c = Math.sqrt(a ** 2 + b ** 2)
+  const message = ['Never', 'stop', 'creating']
 
+  
   return (
-    <main className='flex flex-col items-center justify-center min-h-screen p-4 text-white' style={{
-      backgroundColor: '#000',
+    <main className='flex flex-col items-start justify-start min-h-screen p-4 text-white overflow-hidden' style={{
+      backgroundColor: '#2BE6BE',
       backgroundImage:
-        'radial-gradient(ellipse 60% 60% at 0% 100%, #444 0%, #222 60%, #000 100%)',
+        'linear-gradient(315deg, #2BE6BE, #0B0C22)',
     }}>
-      <div
-        className="flex px-8 py-36 overflow-hidden items-start justify-start gap-12 gap-y-17"
-
+      {new Array(cubesY).fill(0).map((_, y) => <div
+        className="row flex items-start justify-start gap-x-12 -ml-20"
+        style={{ transform: `translate(${c / 2 * (y % 2)}px, ${0 * y}px)` }}
       >
         {new Array(cubesX).fill(0).map((_, x) => {
-          return <div className="cube"><div className="px-1">{x}</div></div>
+          return <div data-letter={message[y]?.[x]?? ''} className="cube"><div className="px-1 z-10 relative"></div></div>
         })}
-      </div>
+      </div>)
+      }
 
-      
     </main>
   )
 }

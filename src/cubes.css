@@ -1,7 +1,8 @@
 .cube {
     height: 120px;
     width: 120px;
-    border: 1px solid black;
+    /* border: 3px solid black; */
+    
     background: white;
     box-sizing: content-box;
     color: black;
@@ -25,14 +26,26 @@
         @apply transition-transform;
         transform: rotateY(-90deg);
         transform-origin: center right;
+        border-right: 20px solid white;
     }
     &::before {
-        content: '';
+        content: attr(data-letter);
         position: absolute;
         background: darkgrey;
+        border-top: 20px solid white;
+        font-size: 64px;
+        line-height: 4px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: 600;
+        text-transform: uppercase;
         height: 120px;
         width: 120px;
         /* top: 0; */
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        justify-self: center;
+        padding: 2rem;
         left:0;
         bottom: -100%;
         @apply transition-transform;
