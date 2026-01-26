@@ -17,5 +17,6 @@ export default defineSchema({
     createdAt: v.number(),
     updatedAt: v.number(),
     preview: v.optional(v.string()), // Plain text excerpt for grid
+    passwordHash: v.optional(v.string()), // bcrypt hash for page protection
   }).index('by_updated', ['updatedAt']),
 })

@@ -1,4 +1,4 @@
-import { Trash2, FileText } from 'lucide-react'
+import { Trash2, FileText, Lock } from 'lucide-react'
 import { Id } from '../../../convex/_generated/dataModel'
 
 interface NotebookPageCardProps {
@@ -6,6 +6,7 @@ interface NotebookPageCardProps {
   title: string
   preview?: string
   updatedAt: number
+  isLocked?: boolean
   onOpen: () => void
   onDelete: () => void
 }
@@ -14,6 +15,7 @@ export default function NotebookPageCard({
   title,
   preview,
   updatedAt,
+  isLocked,
   onOpen,
   onDelete,
 }: NotebookPageCardProps) {
@@ -46,7 +48,14 @@ export default function NotebookPageCard({
 
       {/* Icon and Title */}
       <div className="flex items-start gap-3 mb-3">
-        <FileText className="w-8 h-8 text-cyan-400 flex-shrink-0 mt-0.5" />
+        <div className="relative flex-shrink-0">
+          <FileText className="w-8 h-8 text-cyan-400" />
+          {isLocked && (
+            <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-amber-500 rounded-full flex items-center justify-center">
+              <Lock className="w-2.5 h-2.5 text-gray-900" />
+            </div>
+          )}
+        </div>
         <h3 className="text-lg font-semibold text-white line-clamp-2 pr-8">
           {title || 'Untitled'}
         </h3>

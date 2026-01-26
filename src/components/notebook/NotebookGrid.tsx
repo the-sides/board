@@ -2,8 +2,13 @@ import { Plus, FileText } from 'lucide-react'
 import NotebookPageCard from './NotebookPageCard'
 import { Id, Doc } from '../../../convex/_generated/dataModel'
 
+// Page type from list query (excludes passwordHash, adds isLocked)
+type NotebookPageListItem = Omit<Doc<'notebookPages'>, 'passwordHash'> & {
+  isLocked: boolean
+}
+
 interface NotebookGridProps {
-  pages: Doc<'notebookPages'>[] | undefined
+  pages: NotebookPageListItem[] | undefined
   onCreatePage: () => void
   onOpenPage: (id: Id<'notebookPages'>) => void
   onDeletePage: (id: Id<'notebookPages'>) => void
@@ -44,6 +49,7 @@ export default function NotebookGrid({
           title={page.title}
           preview={page.preview}
           updatedAt={page.updatedAt}
+          isLocked={page.isLocked}
           onOpen={() => onOpenPage(page._id)}
           onDelete={() => onDeletePage(page._id)}
         />

@@ -1,13 +1,19 @@
-import { X, Save } from 'lucide-react'
+import { X, Save, Lock, Unlock } from 'lucide-react'
 import { useState, useEffect, useCallback, useRef } from 'react'
 import TiptapEditor from './TiptapEditor'
 import { Doc } from '../../../convex/_generated/dataModel'
 
+// Extended page type that includes the isLocked field from our query
+type NotebookPage = Omit<Doc<'notebookPages'>, 'passwordHash'> & {
+  isLocked: boolean
+}
+
 interface NotebookEditorProps {
-  page: Doc<'notebookPages'> | null | undefined
+  page: NotebookPage | null | undefined
   isOpen: boolean
   onClose: () => void
   onSave: (title: string, content: string, preview: string) => void
+  onLockClick: () => void
 }
 
 export default function NotebookEditor({
@@ -15,6 +21,7 @@ export default function NotebookEditor({
   isOpen,
   onClose,
   onSave,
+  onLockClick,
 }: NotebookEditorProps) {
   const [title, setTitle] = useState('')
   const titleDebounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -83,13 +90,30 @@ export default function NotebookEditor({
             <Save size={16} />
             <span className="text-sm">Auto-saving...</span>
           </div>
-          <button
-            onClick={handleClose}
-            className="p-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
-            title="Close"
-          >
-            <X size={20} />
-          </button>
+          <div className="flex items-center gap-2">
+            {/* Lock/Unlock button */}
+            <button
+              onClick={onLockClick}
+              className={`p-2 rounded-lg transition-colors flex items-center gap-2 ${
+                page?.isLocked
+                  ? 'text-amber-400 hover:text-amber-300 hover:bg-amber-900/20'
+                  : 'text-gray-400 hover:text-white hover:bg-gray-700'
+              }`}
+              title={page?.isLocked ? 'Password protected' : 'Add password protection'}
+            >
+              {page?.isLocked ? <Lock size={18} /> : <Unlock size={18} />}
+              <span className="text-sm">
+                {page?.isLocked ? 'Locked' : 'Lock'}
+              </span>
+            </button>
+            <button
+              onClick={handleClose}
+              className="p-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors"
+              title="Close"
+            >
+              <X size={20} />
+            </button>
+          </div>
         </div>
 
         {/* Content */}
