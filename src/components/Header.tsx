@@ -4,7 +4,6 @@ import { useState } from 'react'
 import {
   ChevronDown,
   ChevronRight,
-  CurlyBraces,
   Globe,
   Home,
   Snowflake,
