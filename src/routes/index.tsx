@@ -7,6 +7,7 @@ import {
   Waves,
   Sparkles,
   Box,
+  BookOpen,
 } from 'lucide-react'
 
 export const Route = createFileRoute('/')({ component: App })
@@ -16,12 +17,19 @@ function App() {
     {
       icon: <Box className="w-12 h-12 text-cyan-400" />,
       title: 'Winter Steps',
-      href: '/cubes',
+      href: '/demo/cubes',
       description:
         'Winter-themed isometric cubes. Maybe one day it\'ll snow.',
       madeBy: 'hand' as const,
     },
-
+    {
+      icon: <BookOpen className="w-12 h-12 text-cyan-400" />,
+      title: 'Notebook',
+      href: '/demo/notebook',
+      description:
+        'Real-time collaborative notebook with rich text editing. Powered by Convex and Tiptap.',
+      madeBy: 'claude' as const,
+    },
   ]
 
   return (
@@ -52,7 +60,7 @@ function App() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
             <Link
-              to="/demo/cubes"
+              to={feature.href}
               key={index}
               className="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10"
             >

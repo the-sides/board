@@ -2,6 +2,7 @@ import { Link } from '@tanstack/react-router'
 
 import { useState } from 'react'
 import {
+  BookOpen,
   ChevronDown,
   ChevronRight,
   Globe,
@@ -82,6 +83,18 @@ export default function Header() {
           >
             <Snowflake size={20} />
             <span className="font-medium">Winter Steps</span>
+          </Link>
+          <Link
+            to="/demo/notebook"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
+            activeProps={{
+              className:
+                'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
+            }}
+          >
+            <BookOpen size={20} />
+            <span className="font-medium">Notebook</span>
           </Link>
           {/* Demo Links Start */}
 

@@ -11,4 +11,11 @@ export default defineSchema({
     text: v.string(),
     completed: v.boolean(),
   }),
+  notebookPages: defineTable({
+    title: v.string(),
+    content: v.string(),        // Tiptap JSON as string
+    createdAt: v.number(),
+    updatedAt: v.number(),
+    preview: v.optional(v.string()), // Plain text excerpt for grid
+  }).index('by_updated', ['updatedAt']),
 })

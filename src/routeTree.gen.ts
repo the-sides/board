@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DemoTanstackQueryRouteImport } from './routes/demo/tanstack-query'
+import { Route as DemoNotebookRouteImport } from './routes/demo/notebook'
 import { Route as DemoCubesRouteImport } from './routes/demo/cubes'
 import { Route as DemoConvexRouteImport } from './routes/demo/convex'
 import { Route as DemoStartServerFuncsRouteImport } from './routes/demo/start.server-funcs'
@@ -30,6 +31,11 @@ const IndexRoute = IndexRouteImport.update({
 const DemoTanstackQueryRoute = DemoTanstackQueryRouteImport.update({
   id: '/demo/tanstack-query',
   path: '/demo/tanstack-query',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoNotebookRoute = DemoNotebookRouteImport.update({
+  id: '/demo/notebook',
+  path: '/demo/notebook',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoCubesRoute = DemoCubesRouteImport.update({
@@ -87,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/demo/convex': typeof DemoConvexRoute
   '/demo/cubes': typeof DemoCubesRoute
+  '/demo/notebook': typeof DemoNotebookRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/api/tq-todos': typeof DemoApiTqTodosRoute
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/demo/convex': typeof DemoConvexRoute
   '/demo/cubes': typeof DemoCubesRoute
+  '/demo/notebook': typeof DemoNotebookRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/api/tq-todos': typeof DemoApiTqTodosRoute
@@ -116,6 +124,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/demo/convex': typeof DemoConvexRoute
   '/demo/cubes': typeof DemoCubesRoute
+  '/demo/notebook': typeof DemoNotebookRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/api/tq-todos': typeof DemoApiTqTodosRoute
@@ -132,6 +141,7 @@ export interface FileRouteTypes {
     | '/'
     | '/demo/convex'
     | '/demo/cubes'
+    | '/demo/notebook'
     | '/demo/tanstack-query'
     | '/demo/api/names'
     | '/demo/api/tq-todos'
@@ -146,6 +156,7 @@ export interface FileRouteTypes {
     | '/'
     | '/demo/convex'
     | '/demo/cubes'
+    | '/demo/notebook'
     | '/demo/tanstack-query'
     | '/demo/api/names'
     | '/demo/api/tq-todos'
@@ -160,6 +171,7 @@ export interface FileRouteTypes {
     | '/'
     | '/demo/convex'
     | '/demo/cubes'
+    | '/demo/notebook'
     | '/demo/tanstack-query'
     | '/demo/api/names'
     | '/demo/api/tq-todos'
@@ -175,6 +187,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DemoConvexRoute: typeof DemoConvexRoute
   DemoCubesRoute: typeof DemoCubesRoute
+  DemoNotebookRoute: typeof DemoNotebookRoute
   DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
   DemoApiTqTodosRoute: typeof DemoApiTqTodosRoute
@@ -200,6 +213,13 @@ declare module '@tanstack/react-router' {
       path: '/demo/tanstack-query'
       fullPath: '/demo/tanstack-query'
       preLoaderRoute: typeof DemoTanstackQueryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo/notebook': {
+      id: '/demo/notebook'
+      path: '/demo/notebook'
+      fullPath: '/demo/notebook'
+      preLoaderRoute: typeof DemoNotebookRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo/cubes': {
@@ -279,6 +299,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DemoConvexRoute: DemoConvexRoute,
   DemoCubesRoute: DemoCubesRoute,
+  DemoNotebookRoute: DemoNotebookRoute,
   DemoTanstackQueryRoute: DemoTanstackQueryRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,
   DemoApiTqTodosRoute: DemoApiTqTodosRoute,
