@@ -8,6 +8,7 @@ import {
   Sparkles,
   Box,
   BookOpen,
+  Palette,
 } from 'lucide-react'
 
 export const Route = createFileRoute('/')({ component: App })
@@ -28,6 +29,14 @@ function App() {
       href: '/demo/notebook',
       description:
         'Real-time collaborative notebook with rich text editing. Powered by Convex and Tiptap.',
+      madeBy: 'claude' as const,
+    },
+    {
+      icon: <Palette className="w-12 h-12 text-cyan-400" />,
+      title: 'Gradient Generator',
+      href: '/demo/gradient',
+      description:
+        'Create beautiful CSS gradients with live preview. Supports linear, radial, and conic gradients.',
       madeBy: 'claude' as const,
     },
   ]
