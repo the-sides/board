@@ -12,6 +12,7 @@ import {
   Network,
   SquareFunction,
   StickyNote,
+  Video,
   X,
 } from 'lucide-react'
 
@@ -95,6 +96,18 @@ export default function Header() {
           >
             <BookOpen size={20} />
             <span className="font-medium">Notebook</span>
+          </Link>
+          <Link
+            to="/demo/webcam"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
+            activeProps={{
+              className:
+                'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
+            }}
+          >
+            <Video size={20} />
+            <span className="font-medium">Webcam Tester</span>
           </Link>
           {/* Demo Links Start */}
 

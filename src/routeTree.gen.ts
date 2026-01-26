@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DemoWebcamRouteImport } from './routes/demo/webcam'
 import { Route as DemoTanstackQueryRouteImport } from './routes/demo/tanstack-query'
 import { Route as DemoNotebookRouteImport } from './routes/demo/notebook'
 import { Route as DemoGradientRouteImport } from './routes/demo/gradient'
@@ -27,6 +28,11 @@ import { Route as DemoStartSsrDataOnlyRouteImport } from './routes/demo/start.ss
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoWebcamRoute = DemoWebcamRouteImport.update({
+  id: '/demo/webcam',
+  path: '/demo/webcam',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoTanstackQueryRoute = DemoTanstackQueryRouteImport.update({
@@ -102,6 +108,7 @@ export interface FileRoutesByFullPath {
   '/demo/gradient': typeof DemoGradientRoute
   '/demo/notebook': typeof DemoNotebookRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/demo/webcam': typeof DemoWebcamRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/api/tq-todos': typeof DemoApiTqTodosRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
@@ -118,6 +125,7 @@ export interface FileRoutesByTo {
   '/demo/gradient': typeof DemoGradientRoute
   '/demo/notebook': typeof DemoNotebookRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/demo/webcam': typeof DemoWebcamRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/api/tq-todos': typeof DemoApiTqTodosRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
@@ -135,6 +143,7 @@ export interface FileRoutesById {
   '/demo/gradient': typeof DemoGradientRoute
   '/demo/notebook': typeof DemoNotebookRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/demo/webcam': typeof DemoWebcamRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/api/tq-todos': typeof DemoApiTqTodosRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
@@ -153,6 +162,7 @@ export interface FileRouteTypes {
     | '/demo/gradient'
     | '/demo/notebook'
     | '/demo/tanstack-query'
+    | '/demo/webcam'
     | '/demo/api/names'
     | '/demo/api/tq-todos'
     | '/demo/start/api-request'
@@ -169,6 +179,7 @@ export interface FileRouteTypes {
     | '/demo/gradient'
     | '/demo/notebook'
     | '/demo/tanstack-query'
+    | '/demo/webcam'
     | '/demo/api/names'
     | '/demo/api/tq-todos'
     | '/demo/start/api-request'
@@ -185,6 +196,7 @@ export interface FileRouteTypes {
     | '/demo/gradient'
     | '/demo/notebook'
     | '/demo/tanstack-query'
+    | '/demo/webcam'
     | '/demo/api/names'
     | '/demo/api/tq-todos'
     | '/demo/start/api-request'
@@ -202,6 +214,7 @@ export interface RootRouteChildren {
   DemoGradientRoute: typeof DemoGradientRoute
   DemoNotebookRoute: typeof DemoNotebookRoute
   DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
+  DemoWebcamRoute: typeof DemoWebcamRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
   DemoApiTqTodosRoute: typeof DemoApiTqTodosRoute
   DemoStartApiRequestRoute: typeof DemoStartApiRequestRoute
@@ -219,6 +232,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo/webcam': {
+      id: '/demo/webcam'
+      path: '/demo/webcam'
+      fullPath: '/demo/webcam'
+      preLoaderRoute: typeof DemoWebcamRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo/tanstack-query': {
@@ -322,6 +342,7 @@ const rootRouteChildren: RootRouteChildren = {
   DemoGradientRoute: DemoGradientRoute,
   DemoNotebookRoute: DemoNotebookRoute,
   DemoTanstackQueryRoute: DemoTanstackQueryRoute,
+  DemoWebcamRoute: DemoWebcamRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,
   DemoApiTqTodosRoute: DemoApiTqTodosRoute,
   DemoStartApiRequestRoute: DemoStartApiRequestRoute,

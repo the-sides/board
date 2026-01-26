@@ -9,6 +9,7 @@ import {
   Box,
   BookOpen,
   Palette,
+  Video,
 } from 'lucide-react'
 
 export const Route = createFileRoute('/')({ component: App })
@@ -37,6 +38,14 @@ function App() {
       href: '/demo/gradient',
       description:
         'Create beautiful CSS gradients with live preview. Supports linear, radial, and conic gradients.',
+      madeBy: 'claude' as const,
+    },
+    {
+      icon: <Video className="w-12 h-12 text-cyan-400" />,
+      title: 'Webcam Tester',
+      href: '/demo/webcam',
+      description:
+        'Test your webcam with live preview, capture photos, and verify camera settings.',
       madeBy: 'claude' as const,
     },
   ]
