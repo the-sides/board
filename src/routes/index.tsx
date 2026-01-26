@@ -19,8 +19,9 @@ function App() {
       href: '/cubes',
       description:
         'Winter-themed isometric cubes. Maybe one day it\'ll snow.',
+      madeBy: 'hand' as const,
     },
-    
+
   ]
 
   return (
@@ -51,10 +52,21 @@ function App() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
             <Link
-            to='/demo/cubes'
+              to="/demo/cubes"
               key={index}
-              className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10"
+              className="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10"
             >
+              {feature.madeBy && (
+                <span
+                  className={`absolute top-3 right-3 px-2 py-0.5 text-xs font-medium rounded-full ${
+                    feature.madeBy === 'hand'
+                      ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30'
+                      : 'bg-orange-500/20 text-orange-300 border border-orange-500/30'
+                  }`}
+                >
+                  {feature.madeBy === 'hand' ? '✋ by hand' : '✨ with Claude'}
+                </span>
+              )}
               <div className="mb-4">{feature.icon}</div>
               <h3 className="text-xl font-semibold text-white mb-3">
                 {feature.title}
