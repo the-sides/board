@@ -8,6 +8,7 @@ import {
   Sparkles,
   Box,
   BookOpen,
+  Gift,
   Palette,
   Timer,
   Video,
@@ -55,6 +56,14 @@ function App() {
       href: '/demo/pomodoro',
       description:
         'Focus timer with work sessions, breaks, and productivity stats. Tracks your progress with Convex.',
+      madeBy: 'claude' as const,
+    },
+    {
+      icon: <Gift className="w-12 h-12 text-cyan-400" />,
+      title: 'Giveaway Manager',
+      href: '/demo/giveaway',
+      description:
+        'Track giveaway submissions by username, then spin the wheel to randomly pick a weighted winner.',
       madeBy: 'claude' as const,
     },
   ]

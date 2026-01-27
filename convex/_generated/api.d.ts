@@ -8,6 +8,7 @@
  * @module
  */
 
+import type * as giveawayEntries from "../giveawayEntries.js";
 import type * as notebookPages from "../notebookPages.js";
 import type * as pomodoroSessions from "../pomodoroSessions.js";
 import type * as todos from "../todos.js";
@@ -19,6 +20,7 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
+  giveawayEntries: typeof giveawayEntries;
   notebookPages: typeof notebookPages;
   pomodoroSessions: typeof pomodoroSessions;
   todos: typeof todos;

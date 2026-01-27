@@ -24,4 +24,10 @@ export default defineSchema({
     completedPomodoros: v.number(),
     totalFocusMinutes: v.number(),
   }).index('by_date', ['date']),
+  giveawayEntries: defineTable({
+    username: v.string(),
+    count: v.number(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  }).index('by_username', ['username']),
 })

@@ -15,6 +15,7 @@ import { Route as DemoTanstackQueryRouteImport } from './routes/demo/tanstack-qu
 import { Route as DemoPomodoroRouteImport } from './routes/demo/pomodoro'
 import { Route as DemoNotebookRouteImport } from './routes/demo/notebook'
 import { Route as DemoGradientRouteImport } from './routes/demo/gradient'
+import { Route as DemoGiveawayRouteImport } from './routes/demo/giveaway'
 import { Route as DemoCubesRouteImport } from './routes/demo/cubes'
 import { Route as DemoConvexRouteImport } from './routes/demo/convex'
 import { Route as DemoStartServerFuncsRouteImport } from './routes/demo/start.server-funcs'
@@ -54,6 +55,11 @@ const DemoNotebookRoute = DemoNotebookRouteImport.update({
 const DemoGradientRoute = DemoGradientRouteImport.update({
   id: '/demo/gradient',
   path: '/demo/gradient',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoGiveawayRoute = DemoGiveawayRouteImport.update({
+  id: '/demo/giveaway',
+  path: '/demo/giveaway',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoCubesRoute = DemoCubesRouteImport.update({
@@ -111,6 +117,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/demo/convex': typeof DemoConvexRoute
   '/demo/cubes': typeof DemoCubesRoute
+  '/demo/giveaway': typeof DemoGiveawayRoute
   '/demo/gradient': typeof DemoGradientRoute
   '/demo/notebook': typeof DemoNotebookRoute
   '/demo/pomodoro': typeof DemoPomodoroRoute
@@ -129,6 +136,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/demo/convex': typeof DemoConvexRoute
   '/demo/cubes': typeof DemoCubesRoute
+  '/demo/giveaway': typeof DemoGiveawayRoute
   '/demo/gradient': typeof DemoGradientRoute
   '/demo/notebook': typeof DemoNotebookRoute
   '/demo/pomodoro': typeof DemoPomodoroRoute
@@ -148,6 +156,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/demo/convex': typeof DemoConvexRoute
   '/demo/cubes': typeof DemoCubesRoute
+  '/demo/giveaway': typeof DemoGiveawayRoute
   '/demo/gradient': typeof DemoGradientRoute
   '/demo/notebook': typeof DemoNotebookRoute
   '/demo/pomodoro': typeof DemoPomodoroRoute
@@ -168,6 +177,7 @@ export interface FileRouteTypes {
     | '/'
     | '/demo/convex'
     | '/demo/cubes'
+    | '/demo/giveaway'
     | '/demo/gradient'
     | '/demo/notebook'
     | '/demo/pomodoro'
@@ -186,6 +196,7 @@ export interface FileRouteTypes {
     | '/'
     | '/demo/convex'
     | '/demo/cubes'
+    | '/demo/giveaway'
     | '/demo/gradient'
     | '/demo/notebook'
     | '/demo/pomodoro'
@@ -204,6 +215,7 @@ export interface FileRouteTypes {
     | '/'
     | '/demo/convex'
     | '/demo/cubes'
+    | '/demo/giveaway'
     | '/demo/gradient'
     | '/demo/notebook'
     | '/demo/pomodoro'
@@ -223,6 +235,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DemoConvexRoute: typeof DemoConvexRoute
   DemoCubesRoute: typeof DemoCubesRoute
+  DemoGiveawayRoute: typeof DemoGiveawayRoute
   DemoGradientRoute: typeof DemoGradientRoute
   DemoNotebookRoute: typeof DemoNotebookRoute
   DemoPomodoroRoute: typeof DemoPomodoroRoute
@@ -280,6 +293,13 @@ declare module '@tanstack/react-router' {
       path: '/demo/gradient'
       fullPath: '/demo/gradient'
       preLoaderRoute: typeof DemoGradientRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo/giveaway': {
+      id: '/demo/giveaway'
+      path: '/demo/giveaway'
+      fullPath: '/demo/giveaway'
+      preLoaderRoute: typeof DemoGiveawayRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo/cubes': {
@@ -359,6 +379,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DemoConvexRoute: DemoConvexRoute,
   DemoCubesRoute: DemoCubesRoute,
+  DemoGiveawayRoute: DemoGiveawayRoute,
   DemoGradientRoute: DemoGradientRoute,
   DemoNotebookRoute: DemoNotebookRoute,
   DemoPomodoroRoute: DemoPomodoroRoute,
