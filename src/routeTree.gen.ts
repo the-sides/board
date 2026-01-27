@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DemoWebcamRouteImport } from './routes/demo/webcam'
 import { Route as DemoTanstackQueryRouteImport } from './routes/demo/tanstack-query'
+import { Route as DemoPomodoroRouteImport } from './routes/demo/pomodoro'
 import { Route as DemoNotebookRouteImport } from './routes/demo/notebook'
 import { Route as DemoGradientRouteImport } from './routes/demo/gradient'
 import { Route as DemoCubesRouteImport } from './routes/demo/cubes'
@@ -38,6 +39,11 @@ const DemoWebcamRoute = DemoWebcamRouteImport.update({
 const DemoTanstackQueryRoute = DemoTanstackQueryRouteImport.update({
   id: '/demo/tanstack-query',
   path: '/demo/tanstack-query',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoPomodoroRoute = DemoPomodoroRouteImport.update({
+  id: '/demo/pomodoro',
+  path: '/demo/pomodoro',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoNotebookRoute = DemoNotebookRouteImport.update({
@@ -107,6 +113,7 @@ export interface FileRoutesByFullPath {
   '/demo/cubes': typeof DemoCubesRoute
   '/demo/gradient': typeof DemoGradientRoute
   '/demo/notebook': typeof DemoNotebookRoute
+  '/demo/pomodoro': typeof DemoPomodoroRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/demo/webcam': typeof DemoWebcamRoute
   '/demo/api/names': typeof DemoApiNamesRoute
@@ -124,6 +131,7 @@ export interface FileRoutesByTo {
   '/demo/cubes': typeof DemoCubesRoute
   '/demo/gradient': typeof DemoGradientRoute
   '/demo/notebook': typeof DemoNotebookRoute
+  '/demo/pomodoro': typeof DemoPomodoroRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/demo/webcam': typeof DemoWebcamRoute
   '/demo/api/names': typeof DemoApiNamesRoute
@@ -142,6 +150,7 @@ export interface FileRoutesById {
   '/demo/cubes': typeof DemoCubesRoute
   '/demo/gradient': typeof DemoGradientRoute
   '/demo/notebook': typeof DemoNotebookRoute
+  '/demo/pomodoro': typeof DemoPomodoroRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/demo/webcam': typeof DemoWebcamRoute
   '/demo/api/names': typeof DemoApiNamesRoute
@@ -161,6 +170,7 @@ export interface FileRouteTypes {
     | '/demo/cubes'
     | '/demo/gradient'
     | '/demo/notebook'
+    | '/demo/pomodoro'
     | '/demo/tanstack-query'
     | '/demo/webcam'
     | '/demo/api/names'
@@ -178,6 +188,7 @@ export interface FileRouteTypes {
     | '/demo/cubes'
     | '/demo/gradient'
     | '/demo/notebook'
+    | '/demo/pomodoro'
     | '/demo/tanstack-query'
     | '/demo/webcam'
     | '/demo/api/names'
@@ -195,6 +206,7 @@ export interface FileRouteTypes {
     | '/demo/cubes'
     | '/demo/gradient'
     | '/demo/notebook'
+    | '/demo/pomodoro'
     | '/demo/tanstack-query'
     | '/demo/webcam'
     | '/demo/api/names'
@@ -213,6 +225,7 @@ export interface RootRouteChildren {
   DemoCubesRoute: typeof DemoCubesRoute
   DemoGradientRoute: typeof DemoGradientRoute
   DemoNotebookRoute: typeof DemoNotebookRoute
+  DemoPomodoroRoute: typeof DemoPomodoroRoute
   DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
   DemoWebcamRoute: typeof DemoWebcamRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
@@ -246,6 +259,13 @@ declare module '@tanstack/react-router' {
       path: '/demo/tanstack-query'
       fullPath: '/demo/tanstack-query'
       preLoaderRoute: typeof DemoTanstackQueryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo/pomodoro': {
+      id: '/demo/pomodoro'
+      path: '/demo/pomodoro'
+      fullPath: '/demo/pomodoro'
+      preLoaderRoute: typeof DemoPomodoroRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo/notebook': {
@@ -341,6 +361,7 @@ const rootRouteChildren: RootRouteChildren = {
   DemoCubesRoute: DemoCubesRoute,
   DemoGradientRoute: DemoGradientRoute,
   DemoNotebookRoute: DemoNotebookRoute,
+  DemoPomodoroRoute: DemoPomodoroRoute,
   DemoTanstackQueryRoute: DemoTanstackQueryRoute,
   DemoWebcamRoute: DemoWebcamRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,

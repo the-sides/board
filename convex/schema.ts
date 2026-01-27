@@ -19,4 +19,9 @@ export default defineSchema({
     preview: v.optional(v.string()), // Plain text excerpt for grid
     passwordHash: v.optional(v.string()), // bcrypt hash for page protection
   }).index('by_updated', ['updatedAt']),
+  pomodoroSessions: defineTable({
+    date: v.string(),           // "2026-01-26" format for daily grouping
+    completedPomodoros: v.number(),
+    totalFocusMinutes: v.number(),
+  }).index('by_date', ['date']),
 })

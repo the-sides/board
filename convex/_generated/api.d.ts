@@ -9,6 +9,7 @@
  */
 
 import type * as notebookPages from "../notebookPages.js";
+import type * as pomodoroSessions from "../pomodoroSessions.js";
 import type * as todos from "../todos.js";
 
 import type {
@@ -19,6 +20,7 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   notebookPages: typeof notebookPages;
+  pomodoroSessions: typeof pomodoroSessions;
   todos: typeof todos;
 }>;
 

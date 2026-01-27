@@ -9,6 +9,7 @@ import {
   Box,
   BookOpen,
   Palette,
+  Timer,
   Video,
 } from 'lucide-react'
 
@@ -46,6 +47,14 @@ function App() {
       href: '/demo/webcam',
       description:
         'Test your webcam with live preview, capture photos, and verify camera settings.',
+      madeBy: 'claude' as const,
+    },
+    {
+      icon: <Timer className="w-12 h-12 text-cyan-400" />,
+      title: 'Pomodoro Timer',
+      href: '/demo/pomodoro',
+      description:
+        'Focus timer with work sessions, breaks, and productivity stats. Tracks your progress with Convex.',
       madeBy: 'claude' as const,
     },
   ]
