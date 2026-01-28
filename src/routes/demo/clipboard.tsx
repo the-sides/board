@@ -19,12 +19,22 @@ function ClipboardDemo() {
 
   return (
     <main
-      className="flex flex-col items-end justify-start min-h-screen p-24 pl-0 overflow-hidden"
+      className="flex flex-col items-end justify-start min-h-screen p-24 pl-0 overflow-hidden relative"
       style={{
         backgroundColor: '#1a1a2e',
         backgroundImage: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
       }}
     >
+      {/* Centered header */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-10 pb-[10%]">
+        <h1 className="text-6xl font-bold text-white tracking-tight mb-4">
+          Merger<span className="text-cyan-400">AI</span>
+        </h1>
+        <p className="text-xl text-gray-400 max-w-md text-center">
+          Review hundreds of documents in seconds, not hours
+        </p>
+      </div>
+
       <div
         className="relative cursor-pointer"
         style={{
