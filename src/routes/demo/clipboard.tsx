@@ -110,20 +110,40 @@ function ClipboardDemo() {
         </div>
 
       </div>
-      <div className="w-1/2 h-1/2 transition-transform relative overflodw-hidden flex-1 border border-[rgba(255,255,255,0.4)] mt-auto mr-auto"
+      {/* CSS Keyframes for infinite diagonal scroll */}
+      <style>{`
+        @keyframes paperFlow {
+          0% {
+            transform: translate(0, 0);
+          }
+          100% {
+            transform: translate(120px, 64px);
+          }
+        }
+      `}</style>
+
+      <div className="papers w-1/2 h-1/2 transition-transform relative flex-1 border border-[rgba(255,255,255,0.4)] mt-auto mr-auto"
       style={{
-        transform: 'translate(-50%)'
+        transform: 'translate(-1200px, -400px)'
       }}>
-        {[1, 2, 3, 4, 5].map((_, j) =>
-          [1, 2, 3, 4, 5, 6, 7]
-            .map((_, i) => <div
-              className="w-50 shrink-0 aspect-3/2 bg-[rgba(255,255,255,0.4)] absolute"
-              style={{
-                transform: `translate(${320* j}px, ${2* j}px) rotateX(60deg) rotateY(00deg) rotateZ(-45deg)`,
-                transformStyle: 'preserve-3d',
-                left: `${i * 120}px`,
-                top: `${i * 64}px`
-              }}></div>))}
+        {/* Animated wrapper */}
+        <div
+          style={{
+            animation: 'paperFlow 3s linear infinite',
+          }}
+        >
+          {[1, 2, 3, 4].map((_, j) =>
+            [1, 2, 3, 4, 5, 6, 7, 2, 3, 4, 5, 6, 7]
+              .map((_, i) => <div
+                key={`${j}-${i}`}
+                className="w-50 shrink-0 aspect-3/2 bg-[rgba(255,255,255,0.4)] absolute"
+                style={{
+                  transform: `translate(${320* j}px, ${2* j}px) rotateX(60deg) rotateY(00deg) rotateZ(-45deg)`,
+                  transformStyle: 'preserve-3d',
+                  left: `${i * 120}px`,
+                  top: `${i * 64}px`
+                }}></div>))}
+        </div>
       </div>
     </main>
   )
