@@ -6,7 +6,16 @@ export const Route = createFileRoute('/demo/clipboard')({
 })
 
 function ClipboardDemo() {
-  const [isHovered, setIsHovered] = useState(false)
+  const [flyingPaper, setFlyingPaper] = useState<string | null>(null)
+
+  const handlePaperClick = (key: string) => {
+    if (flyingPaper) return
+    setFlyingPaper(key)
+  }
+
+  const handleFlyAnimationEnd = () => {
+    setFlyingPaper(null)
+  }
 
   return (
     <main
@@ -16,10 +25,6 @@ function ClipboardDemo() {
         backgroundImage: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
       }}
     >
-      {/* <h1 className="text-4xl font-bold text-white mb-12 tracking-wide">
-        3D Clipboard
-      </h1> */}
-
       <div
         className="relative cursor-pointer"
         style={{
@@ -105,12 +110,10 @@ function ClipboardDemo() {
               </filter>
             </defs>
           </svg>
-
-
         </div>
-
       </div>
-      {/* CSS Keyframes for infinite diagonal scroll */}
+
+      {/* CSS Keyframes */}
       <style>{`
         @keyframes paperFlow {
           0% {
@@ -120,12 +123,29 @@ function ClipboardDemo() {
             transform: translate(120px, 64px);
           }
         }
+
+        @keyframes flyAway {
+          0% {
+            transform: var(--base-transform);
+            opacity: 1;
+          }
+          15% {
+            transform: var(--base-transform) translateZ(80px) scale(1.15);
+            opacity: 1;
+          }
+          100% {
+            transform: rotateX(60deg) rotateY(20deg) rotateZ(-45deg) translateX(-400px) translateY(-800px) translateZ(300px) scale(0.8);
+            opacity: 0;
+          }
+        }
       `}</style>
 
-      <div className="papers w-1/2 h-1/2 transition-transform relative flex-1 border border-[rgba(255,255,255,0.4)] mt-auto mr-auto"
-      style={{
-        transform: 'translate(-1200px, -400px)'
-      }}>
+      <div
+        className="papers w-1/2 h-1/2 transition-transform relative flex-1 mt-auto mr-auto"
+        style={{
+          transform: 'translate(-1200px, -400px)',
+        }}
+      >
         {/* Animated wrapper */}
         <div
           style={{
@@ -133,16 +153,31 @@ function ClipboardDemo() {
           }}
         >
           {[1, 2, 3, 4].map((_, j) =>
-            [1, 2, 3, 4, 5, 6, 7, 2, 3, 4, 5, 6, 7]
-              .map((_, i) => <div
-                key={`${j}-${i}`}
-                className="w-50 shrink-0 aspect-3/2 bg-[rgba(255,255,255,0.4)] absolute"
-                style={{
-                  transform: `translate(${320* j}px, ${2* j}px) rotateX(60deg) rotateY(00deg) rotateZ(-45deg)`,
-                  transformStyle: 'preserve-3d',
-                  left: `${i * 120}px`,
-                  top: `${i * 64}px`
-                }}></div>))}
+            [1, 2, 3, 4, 5, 6, 7, 2, 3, 4, 5, 6, 7].map((_, i) => {
+              const key = `${j}-${i}`
+              const isFlying = flyingPaper === key
+              const baseTransform = `translate(${320 * j}px, ${2 * j}px) rotateX(60deg) rotateY(0deg) rotateZ(-45deg)`
+
+              return (
+                <div
+                  key={key}
+                  onClick={() => handlePaperClick(key)}
+                  onAnimationEnd={isFlying ? handleFlyAnimationEnd : undefined}
+                  className={`w-50 shrink-0 aspect-3/2 bg-[rgba(255,255,255,0.85)] absolute cursor-pointer
+                    hover:bg-white hover:shadow-lg transition-colors
+                    ${isFlying ? 'z-50 pointer-events-none' : ''}`}
+                  style={{
+                    '--base-transform': baseTransform,
+                    transform: baseTransform,
+                    transformStyle: 'preserve-3d',
+                    left: `${i * 120}px`,
+                    top: `${i * 64}px`,
+                    animation: isFlying ? 'flyAway 1s ease-in-out forwards' : undefined,
+                  } as React.CSSProperties}
+                />
+              )
+            })
+          )}
         </div>
       </div>
     </main>
