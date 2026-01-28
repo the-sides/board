@@ -8,6 +8,7 @@ import {
   Sparkles,
   Box,
   BookOpen,
+  ClipboardList,
   Gift,
   Palette,
   Timer,
@@ -64,6 +65,14 @@ function App() {
       href: '/demo/giveaway',
       description:
         'Track giveaway submissions by username, then spin the wheel to randomly pick a weighted winner.',
+      madeBy: 'claude' as const,
+    },
+    {
+      icon: <ClipboardList className="w-12 h-12 text-cyan-400" />,
+      title: '3D Clipboard',
+      href: '/demo/clipboard',
+      description:
+        'A 3D isometric clipboard using CSS transforms. Hover to see the depth effect.',
       madeBy: 'claude' as const,
     },
   ]

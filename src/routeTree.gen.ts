@@ -18,6 +18,7 @@ import { Route as DemoGradientRouteImport } from './routes/demo/gradient'
 import { Route as DemoGiveawayRouteImport } from './routes/demo/giveaway'
 import { Route as DemoCubesRouteImport } from './routes/demo/cubes'
 import { Route as DemoConvexRouteImport } from './routes/demo/convex'
+import { Route as DemoClipboardRouteImport } from './routes/demo/clipboard'
 import { Route as DemoStartServerFuncsRouteImport } from './routes/demo/start.server-funcs'
 import { Route as DemoStartApiRequestRouteImport } from './routes/demo/start.api-request'
 import { Route as DemoApiTqTodosRouteImport } from './routes/demo/api.tq-todos'
@@ -72,6 +73,11 @@ const DemoConvexRoute = DemoConvexRouteImport.update({
   path: '/demo/convex',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DemoClipboardRoute = DemoClipboardRouteImport.update({
+  id: '/demo/clipboard',
+  path: '/demo/clipboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DemoStartServerFuncsRoute = DemoStartServerFuncsRouteImport.update({
   id: '/demo/start/server-funcs',
   path: '/demo/start/server-funcs',
@@ -115,6 +121,7 @@ const DemoStartSsrDataOnlyRoute = DemoStartSsrDataOnlyRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/demo/clipboard': typeof DemoClipboardRoute
   '/demo/convex': typeof DemoConvexRoute
   '/demo/cubes': typeof DemoCubesRoute
   '/demo/giveaway': typeof DemoGiveawayRoute
@@ -134,6 +141,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/demo/clipboard': typeof DemoClipboardRoute
   '/demo/convex': typeof DemoConvexRoute
   '/demo/cubes': typeof DemoCubesRoute
   '/demo/giveaway': typeof DemoGiveawayRoute
@@ -154,6 +162,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/demo/clipboard': typeof DemoClipboardRoute
   '/demo/convex': typeof DemoConvexRoute
   '/demo/cubes': typeof DemoCubesRoute
   '/demo/giveaway': typeof DemoGiveawayRoute
@@ -175,6 +184,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/demo/clipboard'
     | '/demo/convex'
     | '/demo/cubes'
     | '/demo/giveaway'
@@ -194,6 +204,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/demo/clipboard'
     | '/demo/convex'
     | '/demo/cubes'
     | '/demo/giveaway'
@@ -213,6 +224,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/demo/clipboard'
     | '/demo/convex'
     | '/demo/cubes'
     | '/demo/giveaway'
@@ -233,6 +245,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DemoClipboardRoute: typeof DemoClipboardRoute
   DemoConvexRoute: typeof DemoConvexRoute
   DemoCubesRoute: typeof DemoCubesRoute
   DemoGiveawayRoute: typeof DemoGiveawayRoute
@@ -316,6 +329,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DemoConvexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/demo/clipboard': {
+      id: '/demo/clipboard'
+      path: '/demo/clipboard'
+      fullPath: '/demo/clipboard'
+      preLoaderRoute: typeof DemoClipboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/demo/start/server-funcs': {
       id: '/demo/start/server-funcs'
       path: '/demo/start/server-funcs'
@@ -377,6 +397,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DemoClipboardRoute: DemoClipboardRoute,
   DemoConvexRoute: DemoConvexRoute,
   DemoCubesRoute: DemoCubesRoute,
   DemoGiveawayRoute: DemoGiveawayRoute,
