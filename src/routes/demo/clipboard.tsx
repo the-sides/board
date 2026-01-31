@@ -19,7 +19,7 @@ function ClipboardDemo() {
 
   return (
     <main
-      className="flex flex-col items-end justify-start min-h-screen p-24 pl-0 overflow-hidden relative"
+      className="flex flex-col items-end justify-start min-h-[calc(100vh-72px)] p-24 pl-0 overflow-hidden relative"
       style={{
         backgroundColor: '#1a1a2e',
         backgroundImage: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
@@ -153,7 +153,7 @@ function ClipboardDemo() {
       <div
         className="papers w-1/2 h-1/2 transition-transform relative flex-1 mt-auto mr-auto"
         style={{
-          transform: 'translate(-1200px, -400px)',
+          transform: 'translate(-1200px, -150px)',
         }}
       >
         {/* Animated wrapper */}
