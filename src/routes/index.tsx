@@ -1,18 +1,13 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import {
-  Zap,
-  Server,
-  Route as RouteIcon,
-  Shield,
-  Waves,
-  Sparkles,
-  Box,
   BookOpen,
+  Box,
   ClipboardList,
+  Eye,
   Gift,
   Palette,
   Timer,
-  Video,
+  Video
 } from 'lucide-react'
 
 export const Route = createFileRoute('/')({ component: App })
@@ -34,6 +29,16 @@ function App() {
       description:
         'A 3D isometric clipboard using CSS transforms. Hover to see the depth effect.',
       madeBy: ['hand' as const, 'claude' as const]
+    },
+    {
+      icon: <div className='-ml-3 flex items-center gap-1'>
+        <Eye className="w-8 h-8 text-cyan-400" />
+        <Eye className="w-8 h-8 text-cyan-400" />
+      </div>,
+      title: 'Eyes',
+      href: '/demo/eyes',
+      description: 'Watch the mouse.',
+      madeBy: ['hand' as const]
     },
     {
       icon: <BookOpen className="w-12 h-12 text-cyan-400" />,

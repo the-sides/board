@@ -16,6 +16,7 @@ import { Route as DemoPomodoroRouteImport } from './routes/demo/pomodoro'
 import { Route as DemoNotebookRouteImport } from './routes/demo/notebook'
 import { Route as DemoGradientRouteImport } from './routes/demo/gradient'
 import { Route as DemoGiveawayRouteImport } from './routes/demo/giveaway'
+import { Route as DemoEyesRouteImport } from './routes/demo/eyes'
 import { Route as DemoCubesRouteImport } from './routes/demo/cubes'
 import { Route as DemoConvexRouteImport } from './routes/demo/convex'
 import { Route as DemoClipboardRouteImport } from './routes/demo/clipboard'
@@ -61,6 +62,11 @@ const DemoGradientRoute = DemoGradientRouteImport.update({
 const DemoGiveawayRoute = DemoGiveawayRouteImport.update({
   id: '/demo/giveaway',
   path: '/demo/giveaway',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoEyesRoute = DemoEyesRouteImport.update({
+  id: '/demo/eyes',
+  path: '/demo/eyes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoCubesRoute = DemoCubesRouteImport.update({
@@ -124,6 +130,7 @@ export interface FileRoutesByFullPath {
   '/demo/clipboard': typeof DemoClipboardRoute
   '/demo/convex': typeof DemoConvexRoute
   '/demo/cubes': typeof DemoCubesRoute
+  '/demo/eyes': typeof DemoEyesRoute
   '/demo/giveaway': typeof DemoGiveawayRoute
   '/demo/gradient': typeof DemoGradientRoute
   '/demo/notebook': typeof DemoNotebookRoute
@@ -144,6 +151,7 @@ export interface FileRoutesByTo {
   '/demo/clipboard': typeof DemoClipboardRoute
   '/demo/convex': typeof DemoConvexRoute
   '/demo/cubes': typeof DemoCubesRoute
+  '/demo/eyes': typeof DemoEyesRoute
   '/demo/giveaway': typeof DemoGiveawayRoute
   '/demo/gradient': typeof DemoGradientRoute
   '/demo/notebook': typeof DemoNotebookRoute
@@ -165,6 +173,7 @@ export interface FileRoutesById {
   '/demo/clipboard': typeof DemoClipboardRoute
   '/demo/convex': typeof DemoConvexRoute
   '/demo/cubes': typeof DemoCubesRoute
+  '/demo/eyes': typeof DemoEyesRoute
   '/demo/giveaway': typeof DemoGiveawayRoute
   '/demo/gradient': typeof DemoGradientRoute
   '/demo/notebook': typeof DemoNotebookRoute
@@ -187,6 +196,7 @@ export interface FileRouteTypes {
     | '/demo/clipboard'
     | '/demo/convex'
     | '/demo/cubes'
+    | '/demo/eyes'
     | '/demo/giveaway'
     | '/demo/gradient'
     | '/demo/notebook'
@@ -207,6 +217,7 @@ export interface FileRouteTypes {
     | '/demo/clipboard'
     | '/demo/convex'
     | '/demo/cubes'
+    | '/demo/eyes'
     | '/demo/giveaway'
     | '/demo/gradient'
     | '/demo/notebook'
@@ -227,6 +238,7 @@ export interface FileRouteTypes {
     | '/demo/clipboard'
     | '/demo/convex'
     | '/demo/cubes'
+    | '/demo/eyes'
     | '/demo/giveaway'
     | '/demo/gradient'
     | '/demo/notebook'
@@ -248,6 +260,7 @@ export interface RootRouteChildren {
   DemoClipboardRoute: typeof DemoClipboardRoute
   DemoConvexRoute: typeof DemoConvexRoute
   DemoCubesRoute: typeof DemoCubesRoute
+  DemoEyesRoute: typeof DemoEyesRoute
   DemoGiveawayRoute: typeof DemoGiveawayRoute
   DemoGradientRoute: typeof DemoGradientRoute
   DemoNotebookRoute: typeof DemoNotebookRoute
@@ -313,6 +326,13 @@ declare module '@tanstack/react-router' {
       path: '/demo/giveaway'
       fullPath: '/demo/giveaway'
       preLoaderRoute: typeof DemoGiveawayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo/eyes': {
+      id: '/demo/eyes'
+      path: '/demo/eyes'
+      fullPath: '/demo/eyes'
+      preLoaderRoute: typeof DemoEyesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo/cubes': {
@@ -400,6 +420,7 @@ const rootRouteChildren: RootRouteChildren = {
   DemoClipboardRoute: DemoClipboardRoute,
   DemoConvexRoute: DemoConvexRoute,
   DemoCubesRoute: DemoCubesRoute,
+  DemoEyesRoute: DemoEyesRoute,
   DemoGiveawayRoute: DemoGiveawayRoute,
   DemoGradientRoute: DemoGradientRoute,
   DemoNotebookRoute: DemoNotebookRoute,
