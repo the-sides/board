@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DemoWebcamRouteImport } from './routes/demo/webcam'
+import { Route as DemoTimeSlidersRouteImport } from './routes/demo/time-sliders'
 import { Route as DemoTanstackQueryRouteImport } from './routes/demo/tanstack-query'
 import { Route as DemoPomodoroRouteImport } from './routes/demo/pomodoro'
 import { Route as DemoNotebookRouteImport } from './routes/demo/notebook'
@@ -37,6 +38,11 @@ const IndexRoute = IndexRouteImport.update({
 const DemoWebcamRoute = DemoWebcamRouteImport.update({
   id: '/demo/webcam',
   path: '/demo/webcam',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoTimeSlidersRoute = DemoTimeSlidersRouteImport.update({
+  id: '/demo/time-sliders',
+  path: '/demo/time-sliders',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoTanstackQueryRoute = DemoTanstackQueryRouteImport.update({
@@ -136,6 +142,7 @@ export interface FileRoutesByFullPath {
   '/demo/notebook': typeof DemoNotebookRoute
   '/demo/pomodoro': typeof DemoPomodoroRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/demo/time-sliders': typeof DemoTimeSlidersRoute
   '/demo/webcam': typeof DemoWebcamRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/api/tq-todos': typeof DemoApiTqTodosRoute
@@ -157,6 +164,7 @@ export interface FileRoutesByTo {
   '/demo/notebook': typeof DemoNotebookRoute
   '/demo/pomodoro': typeof DemoPomodoroRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/demo/time-sliders': typeof DemoTimeSlidersRoute
   '/demo/webcam': typeof DemoWebcamRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/api/tq-todos': typeof DemoApiTqTodosRoute
@@ -179,6 +187,7 @@ export interface FileRoutesById {
   '/demo/notebook': typeof DemoNotebookRoute
   '/demo/pomodoro': typeof DemoPomodoroRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/demo/time-sliders': typeof DemoTimeSlidersRoute
   '/demo/webcam': typeof DemoWebcamRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/api/tq-todos': typeof DemoApiTqTodosRoute
@@ -202,6 +211,7 @@ export interface FileRouteTypes {
     | '/demo/notebook'
     | '/demo/pomodoro'
     | '/demo/tanstack-query'
+    | '/demo/time-sliders'
     | '/demo/webcam'
     | '/demo/api/names'
     | '/demo/api/tq-todos'
@@ -223,6 +233,7 @@ export interface FileRouteTypes {
     | '/demo/notebook'
     | '/demo/pomodoro'
     | '/demo/tanstack-query'
+    | '/demo/time-sliders'
     | '/demo/webcam'
     | '/demo/api/names'
     | '/demo/api/tq-todos'
@@ -244,6 +255,7 @@ export interface FileRouteTypes {
     | '/demo/notebook'
     | '/demo/pomodoro'
     | '/demo/tanstack-query'
+    | '/demo/time-sliders'
     | '/demo/webcam'
     | '/demo/api/names'
     | '/demo/api/tq-todos'
@@ -266,6 +278,7 @@ export interface RootRouteChildren {
   DemoNotebookRoute: typeof DemoNotebookRoute
   DemoPomodoroRoute: typeof DemoPomodoroRoute
   DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
+  DemoTimeSlidersRoute: typeof DemoTimeSlidersRoute
   DemoWebcamRoute: typeof DemoWebcamRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
   DemoApiTqTodosRoute: typeof DemoApiTqTodosRoute
@@ -291,6 +304,13 @@ declare module '@tanstack/react-router' {
       path: '/demo/webcam'
       fullPath: '/demo/webcam'
       preLoaderRoute: typeof DemoWebcamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo/time-sliders': {
+      id: '/demo/time-sliders'
+      path: '/demo/time-sliders'
+      fullPath: '/demo/time-sliders'
+      preLoaderRoute: typeof DemoTimeSlidersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo/tanstack-query': {
@@ -426,6 +446,7 @@ const rootRouteChildren: RootRouteChildren = {
   DemoNotebookRoute: DemoNotebookRoute,
   DemoPomodoroRoute: DemoPomodoroRoute,
   DemoTanstackQueryRoute: DemoTanstackQueryRoute,
+  DemoTimeSlidersRoute: DemoTimeSlidersRoute,
   DemoWebcamRoute: DemoWebcamRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,
   DemoApiTqTodosRoute: DemoApiTqTodosRoute,
