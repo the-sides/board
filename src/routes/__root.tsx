@@ -15,6 +15,7 @@ import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
 import appCss from '../styles.css?url'
 
 import type { QueryClient } from '@tanstack/react-query'
+import { useLocation } from "@tanstack/react-router";
 
 interface MyRouterContext {
   queryClient: QueryClient
@@ -46,6 +47,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+const location = useLocation();
   return (
     <html lang="en">
       <head>
@@ -53,7 +55,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <ConvexProvider>
-          <Header />
+         {location.pathname !== '/demo/os' && <Header />}
           {children}
           <TanStackDevtools
             config={{
