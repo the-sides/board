@@ -41,7 +41,10 @@ function RouteComponent() {
   }, [])
   return (
     <>
-      <div>{time}</div>
+      <div className=' bg-teal-900  w-full text-white'>{time}</div>
+      <div className=" bg-teal-900  w-full text-white">I didn't finish this, but this is the motivation, obvously moves with the time
+        <img src='/time-sliders.png' className='w-1/2' />
+      </div>
       <div className="min-h-[calc(100vh-72px)] bg-teal-900 flex gap-1 items-center justify-center">
         <p className="text-3xl text-white">
           {h} {m} {s}
@@ -50,6 +53,7 @@ function RouteComponent() {
       <div className="flex justify-center items-center">
         <Slider cap={12} y={1} />
       </div>
+
     </>
   )
 }

@@ -3,9 +3,11 @@ import {
   BookOpen,
   Box,
   ClipboardList,
+  Computer,
   Eye,
   Gift,
   Palette,
+  Sliders,
   Timer,
   Video
 } from 'lucide-react'
@@ -23,12 +25,18 @@ function App() {
       madeBy: ['hand' as const],
     },
     {
-      icon: <ClipboardList className="w-12 h-12 text-cyan-400" />,
-      title: '3D Clipboard',
-      href: '/demo/clipboard',
-      description:
-        'A 3D isometric clipboard using CSS transforms. Hover to see the depth effect.',
-      madeBy: ['hand' as const, 'claude' as const]
+      icon: <Computer className="w-12 h-12 text-cyan-400" />,
+      title: 'Pseudo OS',
+      href: '/demo/os',
+      description: 'In browser window manager.',
+      madeBy: ['hand' as const]
+    },
+    {
+      icon: <Sliders className="w-12 h-12 text-cyan-400" />,
+      title: 'Time Sliders',
+      href: '/demo/time-sliders',
+      description: 'Clock effect with sliding number boards (unfinished)',
+      madeBy: ['hand' as const]
     },
     {
       icon: <div className='-ml-3 flex items-center gap-1'>
@@ -39,6 +47,14 @@ function App() {
       href: '/demo/eyes',
       description: 'Watch the mouse.',
       madeBy: ['hand' as const]
+    },
+    {
+      icon: <ClipboardList className="w-12 h-12 text-cyan-400" />,
+      title: '3D Clipboard',
+      href: '/demo/clipboard',
+      description:
+        'A 3D isometric clipboard using CSS transforms. Hover to see the depth effect.',
+      madeBy: ['hand' as const, 'claude' as const]
     },
     {
       icon: <BookOpen className="w-12 h-12 text-cyan-400" />,

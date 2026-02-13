@@ -14,6 +14,7 @@ import { Route as DemoWebcamRouteImport } from './routes/demo/webcam'
 import { Route as DemoTimeSlidersRouteImport } from './routes/demo/time-sliders'
 import { Route as DemoTanstackQueryRouteImport } from './routes/demo/tanstack-query'
 import { Route as DemoPomodoroRouteImport } from './routes/demo/pomodoro'
+import { Route as DemoOsRouteImport } from './routes/demo/os'
 import { Route as DemoNotebookRouteImport } from './routes/demo/notebook'
 import { Route as DemoGradientRouteImport } from './routes/demo/gradient'
 import { Route as DemoGiveawayRouteImport } from './routes/demo/giveaway'
@@ -53,6 +54,11 @@ const DemoTanstackQueryRoute = DemoTanstackQueryRouteImport.update({
 const DemoPomodoroRoute = DemoPomodoroRouteImport.update({
   id: '/demo/pomodoro',
   path: '/demo/pomodoro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoOsRoute = DemoOsRouteImport.update({
+  id: '/demo/os',
+  path: '/demo/os',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoNotebookRoute = DemoNotebookRouteImport.update({
@@ -140,6 +146,7 @@ export interface FileRoutesByFullPath {
   '/demo/giveaway': typeof DemoGiveawayRoute
   '/demo/gradient': typeof DemoGradientRoute
   '/demo/notebook': typeof DemoNotebookRoute
+  '/demo/os': typeof DemoOsRoute
   '/demo/pomodoro': typeof DemoPomodoroRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/demo/time-sliders': typeof DemoTimeSlidersRoute
@@ -162,6 +169,7 @@ export interface FileRoutesByTo {
   '/demo/giveaway': typeof DemoGiveawayRoute
   '/demo/gradient': typeof DemoGradientRoute
   '/demo/notebook': typeof DemoNotebookRoute
+  '/demo/os': typeof DemoOsRoute
   '/demo/pomodoro': typeof DemoPomodoroRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/demo/time-sliders': typeof DemoTimeSlidersRoute
@@ -185,6 +193,7 @@ export interface FileRoutesById {
   '/demo/giveaway': typeof DemoGiveawayRoute
   '/demo/gradient': typeof DemoGradientRoute
   '/demo/notebook': typeof DemoNotebookRoute
+  '/demo/os': typeof DemoOsRoute
   '/demo/pomodoro': typeof DemoPomodoroRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/demo/time-sliders': typeof DemoTimeSlidersRoute
@@ -209,6 +218,7 @@ export interface FileRouteTypes {
     | '/demo/giveaway'
     | '/demo/gradient'
     | '/demo/notebook'
+    | '/demo/os'
     | '/demo/pomodoro'
     | '/demo/tanstack-query'
     | '/demo/time-sliders'
@@ -231,6 +241,7 @@ export interface FileRouteTypes {
     | '/demo/giveaway'
     | '/demo/gradient'
     | '/demo/notebook'
+    | '/demo/os'
     | '/demo/pomodoro'
     | '/demo/tanstack-query'
     | '/demo/time-sliders'
@@ -253,6 +264,7 @@ export interface FileRouteTypes {
     | '/demo/giveaway'
     | '/demo/gradient'
     | '/demo/notebook'
+    | '/demo/os'
     | '/demo/pomodoro'
     | '/demo/tanstack-query'
     | '/demo/time-sliders'
@@ -276,6 +288,7 @@ export interface RootRouteChildren {
   DemoGiveawayRoute: typeof DemoGiveawayRoute
   DemoGradientRoute: typeof DemoGradientRoute
   DemoNotebookRoute: typeof DemoNotebookRoute
+  DemoOsRoute: typeof DemoOsRoute
   DemoPomodoroRoute: typeof DemoPomodoroRoute
   DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
   DemoTimeSlidersRoute: typeof DemoTimeSlidersRoute
@@ -325,6 +338,13 @@ declare module '@tanstack/react-router' {
       path: '/demo/pomodoro'
       fullPath: '/demo/pomodoro'
       preLoaderRoute: typeof DemoPomodoroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo/os': {
+      id: '/demo/os'
+      path: '/demo/os'
+      fullPath: '/demo/os'
+      preLoaderRoute: typeof DemoOsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo/notebook': {
@@ -444,6 +464,7 @@ const rootRouteChildren: RootRouteChildren = {
   DemoGiveawayRoute: DemoGiveawayRoute,
   DemoGradientRoute: DemoGradientRoute,
   DemoNotebookRoute: DemoNotebookRoute,
+  DemoOsRoute: DemoOsRoute,
   DemoPomodoroRoute: DemoPomodoroRoute,
   DemoTanstackQueryRoute: DemoTanstackQueryRoute,
   DemoTimeSlidersRoute: DemoTimeSlidersRoute,
