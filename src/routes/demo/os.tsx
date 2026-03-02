@@ -108,17 +108,36 @@ function RouteComponent() {
         alt="Wallpaper of a gradient"
       />
       <div
-        ref={windowRef}
+        ref={undefined}
         onMouseDown={onStartGrab}
-        data-x="200"
-        data-y="80"
+        // data-x="200"
+        // data-y="80"
         style={{
-          transform: `translate(200px, 80px)`,
+          transform: `translate(80px, 140px)`,
         }}
         onMouseUp={onEndGrab}
-        className="cursor-grab rounded font-mono p-4 text-sm text-lime-500 absolute z-10 left-0 top-0 shadow-lg w-1/3 h-1/3 opacity-80 bg-slate-800"
+        className="cursor-grab rounded font-mono text-sm text-lime-500 absolute z-10 left-0 top-0 shadow-lg w-[500px] aspect-2/3 opacity-80 bg-neutral-200 overflow-hidden"
       >
-        <pre className="">
+        <iframe src="https://jacobsides.com" className='w-[calc(100%+16px)] h-full '></iframe>
+        <div
+          ref={resizeRef}
+          onMouseDown={onStartResizing}
+          onMouseUp={onEndResizing}
+          className="w-6 z-10 h-6 cursor-se-resize absolute -bottom-2 -right-2"
+        ></div>
+      </div>
+      <div
+        ref={windowRef}
+        onMouseDown={onStartGrab}
+        data-x="800"
+        data-y="80"
+        style={{
+          transform: `translate(800px, 80px)`,
+        }}
+        onMouseUp={onEndGrab}
+        className="cursor-grab rounded font-mono p-4 text-sm text-lime-500 absolute z-10 left-0 top-0 shadow-lg w-1/3 h-390px opacity-80 bg-slate-800"
+      >
+        <pre className="select-none">
           Permissions Size User Date Modified Name <br />
           drwxr-xr-x - jake 2 Feb 22:09  Desktop <br />
           drwxr-xr-x - jake 11 Feb 09:55 󰲂 Documents <br />
