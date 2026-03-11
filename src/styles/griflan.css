@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400..700;1,400..700&display=swap');
+
+body {
+    background-color: rgb(24, 22, 22);
+}
+h1 {
+    
+  font-family: "Gelasio", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+}
