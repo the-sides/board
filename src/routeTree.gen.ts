@@ -14,8 +14,10 @@ import { Route as DemoWebcamRouteImport } from './routes/demo/webcam'
 import { Route as DemoTimeSlidersRouteImport } from './routes/demo/time-sliders'
 import { Route as DemoTanstackQueryRouteImport } from './routes/demo/tanstack-query'
 import { Route as DemoPomodoroRouteImport } from './routes/demo/pomodoro'
+import { Route as DemoOsGennedRouteImport } from './routes/demo/os-genned'
 import { Route as DemoOsRouteImport } from './routes/demo/os'
 import { Route as DemoNotebookRouteImport } from './routes/demo/notebook'
+import { Route as DemoGriflanRouteImport } from './routes/demo/griflan'
 import { Route as DemoGradientRouteImport } from './routes/demo/gradient'
 import { Route as DemoGiveawayRouteImport } from './routes/demo/giveaway'
 import { Route as DemoEyesRouteImport } from './routes/demo/eyes'
@@ -56,6 +58,11 @@ const DemoPomodoroRoute = DemoPomodoroRouteImport.update({
   path: '/demo/pomodoro',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DemoOsGennedRoute = DemoOsGennedRouteImport.update({
+  id: '/demo/os-genned',
+  path: '/demo/os-genned',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DemoOsRoute = DemoOsRouteImport.update({
   id: '/demo/os',
   path: '/demo/os',
@@ -64,6 +71,11 @@ const DemoOsRoute = DemoOsRouteImport.update({
 const DemoNotebookRoute = DemoNotebookRouteImport.update({
   id: '/demo/notebook',
   path: '/demo/notebook',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoGriflanRoute = DemoGriflanRouteImport.update({
+  id: '/demo/griflan',
+  path: '/demo/griflan',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoGradientRoute = DemoGradientRouteImport.update({
@@ -145,8 +157,10 @@ export interface FileRoutesByFullPath {
   '/demo/eyes': typeof DemoEyesRoute
   '/demo/giveaway': typeof DemoGiveawayRoute
   '/demo/gradient': typeof DemoGradientRoute
+  '/demo/griflan': typeof DemoGriflanRoute
   '/demo/notebook': typeof DemoNotebookRoute
   '/demo/os': typeof DemoOsRoute
+  '/demo/os-genned': typeof DemoOsGennedRoute
   '/demo/pomodoro': typeof DemoPomodoroRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/demo/time-sliders': typeof DemoTimeSlidersRoute
@@ -168,8 +182,10 @@ export interface FileRoutesByTo {
   '/demo/eyes': typeof DemoEyesRoute
   '/demo/giveaway': typeof DemoGiveawayRoute
   '/demo/gradient': typeof DemoGradientRoute
+  '/demo/griflan': typeof DemoGriflanRoute
   '/demo/notebook': typeof DemoNotebookRoute
   '/demo/os': typeof DemoOsRoute
+  '/demo/os-genned': typeof DemoOsGennedRoute
   '/demo/pomodoro': typeof DemoPomodoroRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/demo/time-sliders': typeof DemoTimeSlidersRoute
@@ -192,8 +208,10 @@ export interface FileRoutesById {
   '/demo/eyes': typeof DemoEyesRoute
   '/demo/giveaway': typeof DemoGiveawayRoute
   '/demo/gradient': typeof DemoGradientRoute
+  '/demo/griflan': typeof DemoGriflanRoute
   '/demo/notebook': typeof DemoNotebookRoute
   '/demo/os': typeof DemoOsRoute
+  '/demo/os-genned': typeof DemoOsGennedRoute
   '/demo/pomodoro': typeof DemoPomodoroRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/demo/time-sliders': typeof DemoTimeSlidersRoute
@@ -217,8 +235,10 @@ export interface FileRouteTypes {
     | '/demo/eyes'
     | '/demo/giveaway'
     | '/demo/gradient'
+    | '/demo/griflan'
     | '/demo/notebook'
     | '/demo/os'
+    | '/demo/os-genned'
     | '/demo/pomodoro'
     | '/demo/tanstack-query'
     | '/demo/time-sliders'
@@ -240,8 +260,10 @@ export interface FileRouteTypes {
     | '/demo/eyes'
     | '/demo/giveaway'
     | '/demo/gradient'
+    | '/demo/griflan'
     | '/demo/notebook'
     | '/demo/os'
+    | '/demo/os-genned'
     | '/demo/pomodoro'
     | '/demo/tanstack-query'
     | '/demo/time-sliders'
@@ -263,8 +285,10 @@ export interface FileRouteTypes {
     | '/demo/eyes'
     | '/demo/giveaway'
     | '/demo/gradient'
+    | '/demo/griflan'
     | '/demo/notebook'
     | '/demo/os'
+    | '/demo/os-genned'
     | '/demo/pomodoro'
     | '/demo/tanstack-query'
     | '/demo/time-sliders'
@@ -287,8 +311,10 @@ export interface RootRouteChildren {
   DemoEyesRoute: typeof DemoEyesRoute
   DemoGiveawayRoute: typeof DemoGiveawayRoute
   DemoGradientRoute: typeof DemoGradientRoute
+  DemoGriflanRoute: typeof DemoGriflanRoute
   DemoNotebookRoute: typeof DemoNotebookRoute
   DemoOsRoute: typeof DemoOsRoute
+  DemoOsGennedRoute: typeof DemoOsGennedRoute
   DemoPomodoroRoute: typeof DemoPomodoroRoute
   DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
   DemoTimeSlidersRoute: typeof DemoTimeSlidersRoute
@@ -340,6 +366,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DemoPomodoroRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/demo/os-genned': {
+      id: '/demo/os-genned'
+      path: '/demo/os-genned'
+      fullPath: '/demo/os-genned'
+      preLoaderRoute: typeof DemoOsGennedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/demo/os': {
       id: '/demo/os'
       path: '/demo/os'
@@ -352,6 +385,13 @@ declare module '@tanstack/react-router' {
       path: '/demo/notebook'
       fullPath: '/demo/notebook'
       preLoaderRoute: typeof DemoNotebookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo/griflan': {
+      id: '/demo/griflan'
+      path: '/demo/griflan'
+      fullPath: '/demo/griflan'
+      preLoaderRoute: typeof DemoGriflanRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo/gradient': {
@@ -463,8 +503,10 @@ const rootRouteChildren: RootRouteChildren = {
   DemoEyesRoute: DemoEyesRoute,
   DemoGiveawayRoute: DemoGiveawayRoute,
   DemoGradientRoute: DemoGradientRoute,
+  DemoGriflanRoute: DemoGriflanRoute,
   DemoNotebookRoute: DemoNotebookRoute,
   DemoOsRoute: DemoOsRoute,
+  DemoOsGennedRoute: DemoOsGennedRoute,
   DemoPomodoroRoute: DemoPomodoroRoute,
   DemoTanstackQueryRoute: DemoTanstackQueryRoute,
   DemoTimeSlidersRoute: DemoTimeSlidersRoute,

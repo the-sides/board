@@ -3,7 +3,7 @@ import { ArrowLeft } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import type { MouseEventHandler, ReactNode } from 'react'
 
-export const Route = createFileRoute('/demo/os')({
+export const Route = createFileRoute('/demo/os-genned')({
   component: RouteComponent,
 })
 
